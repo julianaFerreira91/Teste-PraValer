@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Course;
+use App\Model\Institution;
 use Illuminate\Http\Request;
+use App\Http\Requests\CourseRequest;
 
 class CourseController extends Controller
 {
@@ -13,7 +16,9 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::paginate(10);
+
+        return view('courses.list', compact('courses'));
     }
 
     /**
@@ -23,7 +28,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        $institutions = Institution::all();
+
+        return view('courses.create', compact('institutions'));
     }
 
     /**
@@ -32,9 +39,27 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
-        //
+        try
+        {
+            $course = new Course();
+            $course->name           = $request->name;
+            $course->duration       = $request->duration;
+            $course->status         = $request->status;
+            $course->institution_id = $request->institution_id;
+            $course->save();
+
+            \Session::flash('message', 'Registro incluído com sucesso.');
+
+            return back();
+        }
+        catch(\Exception $e)
+        {
+            \Session::flash('error', $e->getMessage());
+
+            return back();
+        }
     }
 
     /**
@@ -56,7 +81,10 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $course = Course::find($id);
+        $institutions = Institution::all();
+
+        return view('courses.edit', compact('course', 'institutions'));
     }
 
     /**
@@ -66,9 +94,27 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CourseRequest $request, $id)
     {
-        //
+        try
+        {
+            $course = Course::find($id);
+            $course->name           = $request->name;
+            $course->duration       = $request->duration;
+            $course->status         = $request->status;
+            $course->institution_id = $request->institution_id;
+            $course->save();
+
+            \Session::flash('message', 'Registro atualizado com sucesso.');
+
+            return back();
+        }
+        catch(\Exception $e)
+        {
+            \Session::flash('error', $e->getMessage());
+
+            return back();
+        }
     }
 
     /**
@@ -79,6 +125,21 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try
+        {
+            $course = Course::find($id);
+            $course->delete();
+
+            \Session::flash('message', 'Registro excluído com sucesso.');
+
+            return back();
+
+        }
+        catch(\Exception $e)
+        {
+            \Session::flash('error', $e->getMessage());
+
+            return back();
+        }
     }
 }

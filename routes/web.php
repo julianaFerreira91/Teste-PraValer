@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::resource('/courses', 'CourseController');
 Route::resource('/institutions', 'InstitutionController');
