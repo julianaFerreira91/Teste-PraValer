@@ -33,10 +33,10 @@ class InstitutionRequest extends FormRequest
     public function message()
     {
         return [
-            'name.required'   => 'O campo nome é obirgatório.',
-            'cnpj.required'   => 'O campo cnpj é obirgatório.',
+            'name.required'   => 'O campo nome é obrigatório.',
+            'cnpj.required'   => 'O campo cnpj é obrigatório.',
             'cnpj.max'        => 'O campo cnpj deve conter no máximo 18 caracteres.',
-            'status.required' => 'O campo status é obirgatório.', 
+            'status.required' => 'O campo status é obrigatório.', 
         ];
     }
 }
