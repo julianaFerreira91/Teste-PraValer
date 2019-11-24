@@ -28,7 +28,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $courses = Course::all();
+        $courses = Course::where('deleted_at', null)
+                         ->where('status', 1)
+                         ->get();
 
         return view('students.create', compact('courses'));
     }
@@ -90,7 +92,9 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = Student::find($id);
-        $courses = Course::all();
+        $courses = Course::where('deleted_at', null)
+                         ->where('status', 1)
+                         ->get();
 
         return view('students.edit', compact('courses', 'student'));
     }

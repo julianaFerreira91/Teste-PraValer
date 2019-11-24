@@ -28,7 +28,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $institutions = Institution::all();
+        $institutions = Institution::where('deleted_at', null)
+                                   ->where('status', 1)
+                                   ->get();
 
         return view('courses.create', compact('institutions'));
     }
@@ -82,7 +84,9 @@ class CourseController extends Controller
     public function edit($id)
     {
         $course = Course::find($id);
-        $institutions = Institution::all();
+        $institutions = Institution::where('deleted_at', null)
+                                   ->where('status', 1)
+                                   ->get();
 
         return view('courses.edit', compact('course', 'institutions'));
     }
