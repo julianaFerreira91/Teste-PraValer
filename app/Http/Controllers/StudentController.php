@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Course;
+use App\Model\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -13,7 +15,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::paginate(10);
+
+        return view('students.list', compact('students'));
     }
 
     /**
@@ -23,7 +27,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $courses = Course::all();
+
+        return view('students.create', compact('courses'));
     }
 
     /**
