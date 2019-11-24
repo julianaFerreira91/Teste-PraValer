@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \App\Console\Commands\TesteLogica\Teste1::class,
+        \App\Console\Commands\TesteLogica\Teste2::class,
     ];
 
     /**
