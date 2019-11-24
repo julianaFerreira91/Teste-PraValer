@@ -2,7 +2,7 @@
 
 Desafio para avaliação técnica da empresa Pra Valer.
 
-##Instalação
+<h3>Instalação</h3>
 <p>
     Primeiramente baixe o projeto digitando no terminal o seguinte comando:
     <strong>git clone https://github.com/julianaFerreira91/Teste-PraValer.git</strong>
@@ -17,17 +17,17 @@ Desafio para avaliação técnica da empresa Pra Valer.
     Como o arquivo .env criado, digite <strong>php artisan key:generate</strong>
 </p>
 
-##Criando o banco de dados
+<h3>Criando o banco de dados</h3>
 <p>
     Para criar o banco de dados o terminal digite <strong>mysql -u root -p</strong> digite a sua senha e em seguida crie o banco usando o comando create database `nome_do_banco`. É necessário que o nome do banco seja o mesmo que foi configurado no .env anteriormente.
 </p>
 
-##Criando as tabelas no banco de dados
+<h3>Criando as tabelas no banco de dados</h3>
 <p>
     Para criar as tabelas necessários para execução do projeto basta digitar no terminal o comando <strong>php artisan migrate</strong>
 </p>
 
-##Executando o projeto
+<h3>Executando o projeto</h3>
 <p>
     Inicie o servidor digitando o comando <strong>php artisan serve</strong> no seu terminal.
 </p>
