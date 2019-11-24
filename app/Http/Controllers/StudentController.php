@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Course;
 use App\Model\Student;
 use Illuminate\Http\Request;
+use App\Http\Requests\StudentRequest;
 
 class StudentController extends Controller
 {
@@ -38,9 +39,35 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
-        //
+        try
+        {
+            $student = new Student();
+            $student->name         = $request->name;
+            $student->cpf          = $request->cpf;
+            $student->birthdate    = $request->birthdate;
+            $student->email        = $request->email;
+            $student->cellphone    = $request->cellphone;
+            $student->address      = $request->address;
+            $student->number       = $request->number;
+            $student->neighborhood = $request->neighborhood;
+            $student->city         = $request->city;
+            $student->state        = $request->state;
+            $student->status       = $request->status;
+            $student->course_id    = $request->course_id;
+            $student->save();
+
+            \Session::flash('message', 'Registro incluído com sucesso.');
+
+            return back();
+        }
+        catch(\Exception $e)
+        {
+            \Session::flash('error', $e->getMessage());
+
+            return back();
+        }
     }
 
     /**
@@ -62,7 +89,10 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        $courses = Course::all();
+
+        return view('students.edit', compact('courses', 'student'));
     }
 
     /**
@@ -72,9 +102,35 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StudentRequest $request, $id)
     {
-        //
+        try
+        {
+            $student = Student::find($id);
+            $student->name         = $request->name;
+            $student->cpf          = $request->cpf;
+            $student->birthdate    = $request->birthdate;
+            $student->email        = $request->email;
+            $student->cellphone    = $request->cellphone;
+            $student->address      = $request->address;
+            $student->number       = $request->number;
+            $student->neighborhood = $request->neighborhood;
+            $student->city         = $request->city;
+            $student->state        = $request->state;
+            $student->status       = $request->status;
+            $student->course_id    = $request->course_id;
+            $student->save();
+
+            \Session::flash('message', 'Registro atualizado com sucesso.');
+
+            return back();
+        }
+        catch(\Exception $e)
+        {
+            \Session::flash('error', $e->getMessage());
+
+            return back();
+        }
     }
 
     /**
@@ -85,6 +141,21 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try
+        {
+            $student = Student::find($id);
+            $student->delete();
+
+            \Session::flash('message', 'Registro excluído com sucesso.');
+
+            return back();
+
+        }
+        catch(\Exception $e)
+        {
+            \Session::flash('error', $e->getMessage());
+
+            return back();
+        }
     }
 }
