@@ -50,6 +50,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="text-center">
+                {{ $institutions->links() }}
+            </div>
         </div>
     </div>
 </div>

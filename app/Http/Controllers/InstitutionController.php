@@ -15,7 +15,7 @@ class InstitutionController extends Controller
      */
     public function index()
     {
-        $institutions = Institution::all();
+        $institutions = Institution::paginate(10);
 
         return view('institutions.list', compact('institutions'));
     }
