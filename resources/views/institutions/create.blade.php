@@ -27,13 +27,13 @@
                             <input class="form-control" type="text" name="name" id="name" required>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label for="cnpj">CNPJ</label>
                             <input class="form-control" type="text" name="cnpj" id="cnpj" required>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select name="status" id="status" class="form-control" required>

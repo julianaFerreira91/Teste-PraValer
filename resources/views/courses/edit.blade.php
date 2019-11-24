@@ -28,13 +28,13 @@
                             <input class="form-control" type="text" name="name" id="name" value="{{ $course->name }}" required>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-2 col-md-2">
                         <div class="form-group">
                             <label for="duration">Duração (anos)</label>
                             <input class="form-control" type="number" name="duration" id="duration" value="{{ $course->duration }}" required>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-2 col-md-2">
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select name="status" id="status" class="form-control" required>
@@ -43,7 +43,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12">
+                    <div class="col-lg-6 col-md-6">
                         <div class="form-group">
                             <label for="institution_id">Instituição</label>
                             <select name="institution_id" id="institution_id" class="form-control" required>
@@ -54,6 +54,12 @@
                                     </option>
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2">
+                        <div class="form-group">
+                        <label for="insert-institution">&nbsp;</label>
+                            <a name="insert-institution" href="{{ route('institutions.create') }}" class="btn btn-default btn-sm form-control">Incluir Instituição</a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
