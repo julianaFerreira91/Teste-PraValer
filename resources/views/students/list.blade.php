@@ -37,15 +37,16 @@
                             <td>{{ $student->email }}</td>
                             <td>
                                 <div class="row">
-                                    <div class="col-lg-"></div>
-                                    <a class="btn btn-success" href="{{ url('/students/' . $student->id . '/edit') }}">
-                                        Editar
-                                    </a>
-                                    <form class="form-inline" action="{{ url('/students/' . $student->id) }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn btn-danger">Excluir</button>
-                                    </form>
+                                    <div class="btn-options">
+                                        <a class="btn btn-success" href="{{ url('/students/' . $student->id . '/edit') }}">
+                                            Editar
+                                        </a>
+                                        <form class="form-inline" action="{{ url('/students/' . $student->id) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit" class="btn btn-danger">Excluir</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

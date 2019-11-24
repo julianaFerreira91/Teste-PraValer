@@ -35,15 +35,16 @@
                             <td>{{ $course->status == 1 ? 'Ativo' : 'Inativo' }}</td>
                             <td>
                                 <div class="row">
-                                    <div class="col-lg-"></div>
-                                    <a class="btn btn-success" href="{{ url('/courses/' . $course->id . '/edit') }}">
-                                        Editar
-                                    </a>
-                                    <form class="form-inline" action="{{ url('/courses/' . $course->id) }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn btn-danger">Excluir</button>
-                                    </form>
+                                    <div class="btn-options">
+                                        <a class="btn btn-success" href="{{ url('/courses/' . $course->id . '/edit') }}">
+                                            Editar
+                                        </a>
+                                        <form class="form-inline" action="{{ url('/courses/' . $course->id) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit" class="btn btn-danger">Excluir</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
