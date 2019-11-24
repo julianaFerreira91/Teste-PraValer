@@ -69,11 +69,11 @@ class Teste1 extends Command
         echo PHP_EOL;
         echo("####################################################") . PHP_EOL;
         echo PHP_EOL;
-        echo("Subtotal: R${$total}") . PHP_EOL;
+        echo("Subtotal: R$ {$total}") . PHP_EOL;
         echo("Desconto: {$desconto}%") . PHP_EOL;
         echo PHP_EOL;
         echo("####################################################") . PHP_EOL;
         echo PHP_EOL;
-        echo "Total a Pagar: R${$total_pagar}" . PHP_EOL;
+        echo "Total a Pagar: R$ {$total_pagar}" . PHP_EOL;
     }
 }
