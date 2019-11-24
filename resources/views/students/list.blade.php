@@ -33,7 +33,7 @@
                         <tr>
                             <td>{{ $student->name }}</td>
                             <td>{{ $student->cpf }}</td>
-                            <td>{{ $student->birthdata }}</td>
+                            <td>{{ $student->birthdate }}</td>
                             <td>{{ $student->email }}</td>
                             <td>
                                 <div class="row">
