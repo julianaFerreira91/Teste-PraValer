@@ -52,5 +52,8 @@
     </footer>
     
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.mask.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/default.js') }}"></script>
 </body>
 </html>
