@@ -22,7 +22,6 @@ class CreateCoursesTable extends Migration
 
             $table->foreign('institution_id')->references('id')->on('institutions');
 
-            $table->softDeletes();
             $table->timestamps();
         });
     }

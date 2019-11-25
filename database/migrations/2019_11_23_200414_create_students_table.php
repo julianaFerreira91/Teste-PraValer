@@ -30,7 +30,6 @@ class CreateStudentsTable extends Migration
 
             $table->foreign('course_id')->references('id')->on('courses');
 
-            $table->softDeletes();
             $table->timestamps();
         });
     }

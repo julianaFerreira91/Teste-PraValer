@@ -19,7 +19,6 @@ class CreateInstitutionsTable extends Migration
             $table->string('cnpj')->unique();
             $table->boolean('status');
             
-            $table->softDeletes();
             $table->timestamps();
         });
     }
