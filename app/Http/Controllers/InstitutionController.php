@@ -122,9 +122,10 @@ class InstitutionController extends Controller
         try
         {
             $institution = Institution::find($id);
-            $institution->delete();
+            $institution->status = 0;
+            $institution->save();
 
-            \Session::flash('message', 'Registro excluído com sucesso.');
+            \Session::flash('message', 'Registro inativado com sucesso.');
 
             return back();
 
