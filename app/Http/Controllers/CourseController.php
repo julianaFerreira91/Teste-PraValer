@@ -28,8 +28,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $institutions = Institution::where('deleted_at', null)
-                                   ->where('status', 1)
+        $institutions = Institution::where('status', 1)
                                    ->get();
 
         return view('courses.create', compact('institutions'));
