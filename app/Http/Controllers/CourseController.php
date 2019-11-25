@@ -45,6 +45,14 @@ class CourseController extends Controller
     {
         try
         {
+            $institution = Institution::where('status', 1)
+                                      ->where('id', $request->institution_id)
+                                      ->exists();
+
+            if(!$institution){
+                throw new \Exception('Instituição escolhida está inativa.');
+            }
+
             $course = new Course();
             $course->name           = $request->name;
             $course->duration       = $request->duration;
@@ -84,8 +92,7 @@ class CourseController extends Controller
     public function edit($id)
     {
         $course = Course::find($id);
-        $institutions = Institution::where('deleted_at', null)
-                                   ->where('status', 1)
+        $institutions = Institution::where('status', 1)
                                    ->get();
 
         return view('courses.edit', compact('course', 'institutions'));
@@ -102,6 +109,14 @@ class CourseController extends Controller
     {
         try
         {
+            $institution = Institution::where('status', 1)
+                                 ->where('id', $request->institution_id)
+                                 ->exists();
+
+            if(!$institution){
+                throw new \Exception('Instituição escolhida está inativa.');
+            }
+
             $course = Course::find($id);
             $course->name           = $request->name;
             $course->duration       = $request->duration;
@@ -132,9 +147,10 @@ class CourseController extends Controller
         try
         {
             $course = Course::find($id);
-            $course->delete();
+            $course->status = 0;
+            $course->save();
 
-            \Session::flash('message', 'Registro excluído com sucesso.');
+            \Session::flash('message', 'Registro inativado com sucesso.');
 
             return back();
 
