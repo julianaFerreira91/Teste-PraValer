@@ -18,7 +18,7 @@ class Teste2 extends Command
      *
      * @var string
      */
-    protected $description = 'Na usina de Angra dos Ries, os técnicos analisam a perda de massa de um material radioativo. Sabendo-se que este perde 25% da sua massa a cada 30 segundos, criar um algoritmo que imprima o tempo necessário para que a massa desse material seja menor que 0.10.';
+    protected $description = 'Na usina de Angra dos Reis, os técnicos analisam a perda de massa de um material radioativo. Sabendo-se que este perde 25% da sua massa a cada 30 segundos, criar um algoritmo que imprima o tempo necessário para que a massa desse material seja menor que 0.10.';
 
     /**
      * Create a new command instance.
@@ -42,7 +42,7 @@ class Teste2 extends Command
 
         $contador = 0;
 
-        while ($massa > 0.10) {
+        while (!($massa < 0.10)) {
             $massa -= $massa * 0.25;
             $contador++;
         }
