@@ -23,8 +23,8 @@
                     <tr>
                         <th>Nome</th>
                         <th>CPF</th>
-                        <th>Data de Nasc.</th>
                         <th>E-mail</th>
+                        <th>Status</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
@@ -33,8 +33,8 @@
                         <tr>
                             <td>{{ $student->name }}</td>
                             <td>{{ $student->cpf }}</td>
-                            <td>{{ $student->birthdate }}</td>
                             <td>{{ $student->email }}</td>
+                            <td>{{ $student->status == 1 ? 'Ativo' : 'Inativo' }}</td>
                             <td>
                                 <div class="row">
                                     <div class="btn-options">
