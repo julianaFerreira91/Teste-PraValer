@@ -28,8 +28,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $courses = Course::where('deleted_at', null)
-                         ->where('status', 1)
+        $courses = Course::where('status', 1)
                          ->get();
 
         return view('students.create', compact('courses'));
@@ -45,6 +44,14 @@ class StudentController extends Controller
     {
         try
         {
+            $course = Course::where('status', 1)
+                            ->where('id', $request->course_id)
+                            ->exists();
+
+            if(!$course){
+                throw new \Exception('Curso escolhido está inativo');
+            }
+
             $student = new Student();
             $student->name         = $request->name;
             $student->cpf          = $request->cpf;
@@ -92,8 +99,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = Student::find($id);
-        $courses = Course::where('deleted_at', null)
-                         ->where('status', 1)
+        $courses = Course::where('status', 1)
                          ->get();
 
         return view('students.edit', compact('courses', 'student'));
@@ -110,6 +116,14 @@ class StudentController extends Controller
     {
         try
         {
+            $course = Course::where('status', 1)
+                            ->where('id', $request->course_id)
+                            ->exists();
+
+            if(!$course){
+                throw new \Exception('Curso escolhido está inativo');
+            }
+
             $student = Student::find($id);
             $student->name         = $request->name;
             $student->cpf          = $request->cpf;
@@ -148,9 +162,10 @@ class StudentController extends Controller
         try
         {
             $student = Student::find($id);
-            $student->delete();
+            $student->status = 0;
+            $student->save();
 
-            \Session::flash('message', 'Registro excluído com sucesso.');
+            \Session::flash('message', 'Registro inavitado com sucesso.');
 
             return back();
 
